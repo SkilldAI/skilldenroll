@@ -137,7 +137,7 @@ const WaitlistForm = () => {
     workEmail: '',
     institutionName: '',
     role: '',
-    studentCount: ''
+    callCentreAgents: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
