@@ -469,7 +469,7 @@ const WaitlistForm = () => {
           first_name: formData.firstName,
           last_name: formData.lastName,
           email: formData.workEmail,
-          phone_number: formData.phoneNumber,
+          // phone_number: formData.phoneNumber, // Temporarily commented out until column is added
           institution: formData.institutionName,
           role: formData.role,
           student_count: formData.callCentreAgents
