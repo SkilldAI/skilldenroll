@@ -324,14 +324,14 @@ const WaitlistForm = () => {
             </div>
 
             <div>
-              <label htmlFor="studentCount" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="callCentreAgents" className="block text-sm font-medium text-gray-700 mb-2">
                 Call Centre Agents *
               </label>
               <select
-                id="studentCount"
-                name="studentCount"
+                id="callCentreAgents"
+                name="callCentreAgents"
                 required
-                value={formData.studentCount}
+                value={formData.callCentreAgents}
                 onChange={handleInputChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-gray-900 outline-none transition-colors"
               >
