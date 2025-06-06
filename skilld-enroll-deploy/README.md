@@ -1,49 +1,71 @@
-# Getting Started with Create React App
+# Skilld Enroll Replica
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A pixel-perfect replica of the Skilld Enroll AI-powered enrollment platform for higher education.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- **Voice AI Recruitment Solutions** - 24/7 voice assistance, multilingual support
+- **50+ Integrations** - CRM, University Systems, Communication Channels, Analytics
+- **Functional Waitlist Form** - Real Supabase database integration
+- **Responsive Design** - Works perfectly on all devices
+- **Professional UI/UX** - Modern design with smooth interactions
 
-### `npm start`
+## 🛠️ Technology Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend:** React 19, TailwindCSS
+- **Database:** Supabase
+- **Deployment:** Vercel
+- **Styling:** TailwindCSS with PostCSS
+- **Forms:** Real-time validation with Supabase integration
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📦 Installation
 
-### `npm test`
+```bash
+# Install dependencies
+npm install
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Start development server
+npm start
 
-### `npm run build`
+# Build for production
+npm run build
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🌍 Environment Variables
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Create a `.env` file in the root directory:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```env
+REACT_APP_SUPABASE_URL=your_supabase_url
+REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-### `npm run eject`
+## 🎯 Deployment to Vercel
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Option 1: Direct Deploy (Recommended)
+1. Push this repository to GitHub
+2. Go to [vercel.com](https://vercel.com) and import your repository
+3. Configure project settings:
+   - **Framework Preset:** React
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `build`
+4. Add environment variables in Vercel dashboard
+5. Deploy!
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Option 2: One-Click Deploy
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/skilld-enroll-replica)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📱 Demo
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Visit the live demo: [Skilld Enroll Replica](https://your-vercel-app.vercel.app)
 
-## Learn More
+## 🤝 Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This is a replica project created for demonstration purposes.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📄 License
+
+MIT License
 
 ### Code Splitting
 
