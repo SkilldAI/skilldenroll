@@ -66,8 +66,8 @@ const HeroSection = () => {
           <div className="relative">
             <div className="bg-gray-100 rounded-2xl p-8 h-96 flex items-center justify-center">
               <img 
-                src="/hero-microphone.jpg"
-                alt="Voice AI Microphone with Wings"
+                src="https://images.unsplash.com/photo-1485579149621-3123dd979885"
+                alt="Professional Voice Technology"
                 className="w-full h-full object-cover rounded-xl"
               />
             </div>
