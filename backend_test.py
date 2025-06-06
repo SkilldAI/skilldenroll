@@ -5,6 +5,8 @@ import unittest
 from dotenv import load_dotenv
 import sys
 import logging
+import time
+from supabase import create_client, Client
 
 # Configure logging
 logging.basicConfig(
@@ -16,9 +18,15 @@ logger = logging.getLogger(__name__)
 # Load environment variables from frontend .env file to get the backend URL
 load_dotenv('/app/frontend/.env')
 BACKEND_URL = os.environ.get('REACT_APP_BACKEND_URL')
+SUPABASE_URL = os.environ.get('REACT_APP_SUPABASE_URL')
+SUPABASE_KEY = os.environ.get('REACT_APP_SUPABASE_ANON_KEY')
 
 if not BACKEND_URL:
     logger.error("REACT_APP_BACKEND_URL not found in environment variables")
+    sys.exit(1)
+
+if not SUPABASE_URL or not SUPABASE_KEY:
+    logger.error("Supabase environment variables not found")
     sys.exit(1)
 
 # Ensure the URL has the /api prefix for backend routes
@@ -63,23 +71,56 @@ class BackendAPITest(unittest.TestCase):
 
     def test_supabase_integration(self):
         """
-        Test the Supabase integration by checking if the frontend environment variables are properly set.
-        Note: This test doesn't actually test the Supabase API as that's handled client-side in the frontend.
+        Test the Supabase integration by checking if the frontend environment variables are properly set
+        and if the Supabase client can successfully insert data into the waitlist table.
         """
-        logger.info("Testing Supabase environment variables")
+        logger.info("Testing Supabase integration")
         
-        # Load environment variables from frontend .env file
-        load_dotenv('/app/frontend/.env')
-        supabase_url = os.environ.get('REACT_APP_SUPABASE_URL')
-        supabase_key = os.environ.get('REACT_APP_SUPABASE_ANON_KEY')
+        # Verify environment variables
+        self.assertIsNotNone(SUPABASE_URL, "REACT_APP_SUPABASE_URL not found in environment variables")
+        self.assertIsNotNone(SUPABASE_KEY, "REACT_APP_SUPABASE_ANON_KEY not found in environment variables")
+        self.assertTrue(SUPABASE_URL.startswith('https://'), "Supabase URL should start with https://")
         
-        self.assertIsNotNone(supabase_url, "REACT_APP_SUPABASE_URL not found in environment variables")
-        self.assertIsNotNone(supabase_key, "REACT_APP_SUPABASE_ANON_KEY not found in environment variables")
-        
-        # Verify the URL format
-        self.assertTrue(supabase_url.startswith('https://'), "Supabase URL should start with https://")
-        
-        logger.info("Supabase environment variables test passed")
+        try:
+            # Initialize Supabase client
+            supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+            logger.info("Successfully initialized Supabase client")
+            
+            # Test data for waitlist submission
+            test_data = {
+                "first_name": "Sarah",
+                "last_name": "Johnson",
+                "email": "sarah.johnson@testuni.edu",
+                "institution": "Test University",
+                "role": "Admissions Director",
+                "student_count": "1,000 - 5,000"
+            }
+            
+            # Generate a unique identifier for this test entry to avoid duplicates
+            test_id = f"test_{int(time.time())}"
+            test_data["test_id"] = test_id
+            
+            # Attempt to insert data into the waitlist table
+            logger.info(f"Attempting to insert test data into Supabase waitlist table: {test_data}")
+            result = supabase.table('waitlist').insert(test_data).execute()
+            
+            # Check if the insert was successful
+            self.assertIsNotNone(result.data, "No data returned from Supabase insert operation")
+            self.assertTrue(len(result.data) > 0, "No records were inserted")
+            self.assertEqual(result.data[0]['first_name'], test_data['first_name'], "First name mismatch in inserted data")
+            self.assertEqual(result.data[0]['email'], test_data['email'], "Email mismatch in inserted data")
+            
+            logger.info("Successfully inserted test data into Supabase waitlist table")
+            
+            # Clean up the test data
+            logger.info(f"Cleaning up test data with test_id: {test_id}")
+            supabase.table('waitlist').delete().eq('test_id', test_id).execute()
+            
+            logger.info("Supabase integration test passed")
+            
+        except Exception as e:
+            logger.error(f"Error testing Supabase integration: {str(e)}")
+            self.fail(f"Supabase integration test failed: {str(e)}")
 
 
 if __name__ == "__main__":
