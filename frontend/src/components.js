@@ -66,8 +66,8 @@ const HeroSection = () => {
           <div className="relative">
             <div className="bg-gray-100 rounded-2xl p-8 h-96 flex items-center justify-center">
               <img 
-                src="https://images.unsplash.com/photo-1636829147637-6b88c84fb6e2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwxfHx2b2ljZSUyMGFzc2lzdGFudHxlbnwwfHx8Ymx1ZXwxNzQ5MTkxNTY3fDA&ixlib=rb-4.1.0&q=85"
-                alt="Voice AI Technology"
+                src="https://images.pexels.com/photos/4790268/pexels-photo-4790268.jpeg"
+                alt="Voice AI Assistant Technology"
                 className="w-full h-full object-cover rounded-xl"
               />
             </div>
