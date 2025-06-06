@@ -157,23 +157,24 @@ const WaitlistForm = () => {
     setError('');
 
     try {
-      const { data, error } = await supabase
-        .from('waitlist')
-        .insert([
-          {
-            first_name: formData.firstName,
-            last_name: formData.lastName,
-            email: formData.workEmail,
-            institution: formData.institutionName,
-            role: formData.role,
-            student_count: formData.studentCount
-          }
-        ]);
+      // Use direct REST API call instead of Supabase client
+      const response = await fetch(`${supabaseUrl}/rest/v1/waitlist`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': supabaseKey
+        },
+        body: JSON.stringify({
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          email: formData.workEmail,
+          institution: formData.institutionName,
+          role: formData.role,
+          student_count: formData.studentCount
+        })
+      });
 
-      if (error) {
-        console.error('Supabase error:', error);
-        setError('There was an error submitting your information. Please try again.');
-      } else {
+      if (response.status === 201) {
         setIsSubmitted(true);
         setFormData({
           firstName: '',
@@ -183,6 +184,9 @@ const WaitlistForm = () => {
           role: '',
           studentCount: ''
         });
+      } else {
+        console.error('Supabase error:', await response.text());
+        setError('There was an error submitting your information. Please try again.');
       }
     } catch (err) {
       console.error('Error:', err);
