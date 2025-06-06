@@ -160,6 +160,66 @@ class BackendAPITest(unittest.TestCase):
         except Exception as e:
             logger.error(f"Error testing Supabase integration with REST API: {str(e)}")
             self.fail(f"Supabase integration with REST API test failed: {str(e)}")
+            
+    def test_updated_call_centre_agents_field(self):
+        """
+        Test the updated 'Call Centre Agents' field in the waitlist form.
+        This test verifies that the form can successfully submit data with the new field.
+        """
+        logger.info("Testing updated 'Call Centre Agents' field in waitlist form")
+        
+        # Verify environment variables
+        self.assertIsNotNone(SUPABASE_URL, "REACT_APP_SUPABASE_URL not found in environment variables")
+        self.assertIsNotNone(SUPABASE_KEY, "REACT_APP_SUPABASE_ANON_KEY not found in environment variables")
+        
+        headers = {
+            "apikey": SUPABASE_KEY,
+            "Content-Type": "application/json"
+        }
+        
+        # Test data from the review request
+        test_data = {
+            "first_name": "Michael",
+            "last_name": "Smith",
+            "email": "michael.smith@callcentre.com",
+            "institution": "Global Call Solutions",
+            "role": "Operations Director",
+            "student_count": "26-50"  # Using the new call centre agents value
+        }
+        
+        try:
+            # Try to insert data using direct REST API
+            response = requests.post(
+                f"{SUPABASE_URL}/rest/v1/waitlist",
+                headers=headers,
+                json=test_data
+            )
+            
+            logger.info(f"Call Centre Agents field test - REST API Status Code: {response.status_code}")
+            
+            # Check if the insert was successful
+            self.assertEqual(response.status_code, 201, f"Expected status code 201, got {response.status_code}")
+            logger.info("Call Centre Agents field test - REST API insert successful (201 Created)")
+            
+            # Test with different call centre agent values
+            for agent_count in ["0-15", "101-200", "200+"]:
+                test_data["student_count"] = agent_count
+                test_data["email"] = f"test.{agent_count.replace('-', '_').replace('+', 'plus')}@callcentre.com"
+                
+                response = requests.post(
+                    f"{SUPABASE_URL}/rest/v1/waitlist",
+                    headers=headers,
+                    json=test_data
+                )
+                
+                logger.info(f"Call Centre Agents field test with {agent_count} - REST API Status Code: {response.status_code}")
+                self.assertEqual(response.status_code, 201, f"Expected status code 201 for {agent_count}, got {response.status_code}")
+            
+            logger.info("Call Centre Agents field test passed for all dropdown options")
+            
+        except Exception as e:
+            logger.error(f"Error testing Call Centre Agents field: {str(e)}")
+            self.fail(f"Call Centre Agents field test failed: {str(e)}")
 
 
 if __name__ == "__main__":
