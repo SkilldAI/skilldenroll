@@ -409,6 +409,12 @@ const WaitlistForm = () => {
     setError('');
 
     try {
+      // Check if Supabase is available
+      if (!supabaseUrl || !supabaseKey) {
+        setError('Configuration error: Supabase credentials not found. Please check environment variables.');
+        return;
+      }
+
       // Use direct REST API call instead of Supabase client
       const response = await fetch(`${supabaseUrl}/rest/v1/waitlist`, {
         method: 'POST',
