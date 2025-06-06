@@ -163,8 +163,8 @@ const WaitlistForm = () => {
           {
             first_name: formData.firstName,
             last_name: formData.lastName,
-            work_email: formData.workEmail,
-            institution_name: formData.institutionName,
+            email: formData.workEmail,  // Changed from work_email to email
+            institution: formData.institutionName,  // Changed from institution_name to institution
             role: formData.role,
             student_count: formData.studentCount,
             created_at: new Date().toISOString()
