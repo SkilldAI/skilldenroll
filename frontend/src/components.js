@@ -66,8 +66,8 @@ const HeroSection = () => {
           <div className="relative">
             <div className="bg-gray-100 rounded-2xl p-8 h-96 flex items-center justify-center">
               <img 
-                src="https://images.pexels.com/photos/4790268/pexels-photo-4790268.jpeg"
-                alt="Voice AI Assistant Technology"
+                src="https://images.pexels.com/photos/16245254/pexels-photo-16245254.jpeg"
+                alt="Conversational AI Interface"
                 className="w-full h-full object-cover rounded-xl"
               />
             </div>
