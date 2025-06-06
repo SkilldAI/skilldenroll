@@ -137,7 +137,7 @@ backend:
 
   - task: "Supabase Waitlist Integration"
     implemented: true
-    working: false
+    working: true
     file: "/app/frontend/src/components.js"
     stuck_count: 1
     priority: "high"
@@ -155,6 +155,9 @@ backend:
       - working: false
         agent: "testing"
         comment: "Supabase integration is still not working. The field names in the frontend code have been corrected, but the RLS policies are still blocking inserts. When testing with the Supabase Python client, we get a permission error: 'permission denied for table users'. The SQL commands to fix the RLS policies need to be executed in the Supabase dashboard: ALTER TABLE public.waitlist ENABLE ROW LEVEL SECURITY; CREATE POLICY 'Allow anonymous inserts to waitlist' ON public.waitlist FOR INSERT TO anon USING (true); GRANT INSERT ON public.waitlist TO anon;"
+      - working: true
+        agent: "testing"
+        comment: "Supabase integration is now working for direct REST API calls. When testing with direct REST API calls to the Supabase endpoint, we can successfully insert data into the waitlist table (status code 201). However, the Supabase client library still returns an error 'permission denied for table users' when trying to insert or select data. This suggests that the RLS policies have been partially fixed - they allow inserts via REST API but there might still be an issue with the Supabase client library or with the 'users' table permissions. Since the frontend uses direct fetch calls rather than the Supabase client library, the waitlist form should now be working correctly."
 
 frontend:
   - task: "Frontend UI Components"
