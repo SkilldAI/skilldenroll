@@ -137,9 +137,9 @@ backend:
 
   - task: "Supabase Waitlist Integration"
     implemented: true
-    working: true
+    working: false
     file: "/app/frontend/src/components.js"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
     needs_retesting: false
     status_history:
@@ -149,6 +149,9 @@ backend:
       - working: true
         agent: "testing"
         comment: "Supabase integration is implemented client-side in the frontend. Environment variables for Supabase URL and API key are correctly set. The WaitlistForm component in components.js handles the form submission to the Supabase 'waitlist' table with all required fields."
+      - working: false
+        agent: "testing"
+        comment: "Supabase integration is not working due to permission issues. The waitlist table exists with the correct schema, but Row Level Security (RLS) policies are blocking inserts from the anonymous key. The frontend code was also using incorrect field names (work_email instead of email, institution_name instead of institution). I've updated the frontend code to use the correct field names, but the RLS policies still need to be fixed in the Supabase dashboard."
 
 frontend:
   - task: "Frontend UI Components"
