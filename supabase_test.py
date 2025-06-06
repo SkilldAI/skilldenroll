@@ -99,8 +99,15 @@ def create_waitlist_table():
     # Unfortunately, we can't create tables using the REST API directly
     # We would need to use the Supabase Management API or the Supabase dashboard
     logger.error("Cannot automatically create the table via REST API")
-    logger.error("Please create the 'waitlist' table manually in the Supabase dashboard with the following SQL:")
-    logger.error(CREATE_TABLE_SQL)
+    logger.error("Please ensure the existing 'waitlist' table has the correct schema:")
+    logger.error("- first_name (text)")
+    logger.error("- last_name (text)")
+    logger.error("- email (text)")
+    logger.error("- institution (text)")
+    logger.error("- role (text)")
+    logger.error("- student_count (text)")
+    logger.error("- created_at (timestamp)")
+    
     logger.error("\nThen enable RLS and create an insert policy:")
     logger.error(ENABLE_RLS_SQL)
     logger.error(CREATE_INSERT_POLICY_SQL)
