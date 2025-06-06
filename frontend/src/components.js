@@ -582,7 +582,7 @@ const WaitlistForm = () => {
 
             <div>
               <label htmlFor="callCentreAgents" className="block text-sm font-medium text-gray-700 mb-2">
-                Call Centre Agents *
+                Number of Call Centre Agents *
               </label>
               <select
                 id="callCentreAgents"
