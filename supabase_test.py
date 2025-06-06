@@ -79,12 +79,33 @@ def test_supabase_table_exists():
     if response.status_code == 200:
         logger.info("✅ 'waitlist' table exists in Supabase")
         return True
-    elif response.status_code == 404:
-        logger.error("❌ 'waitlist' table does not exist in Supabase")
+    elif response.status_code == 404 or response.status_code == 401:
+        logger.error(f"❌ 'waitlist' table does not exist or access denied: {response.status_code} - {response.text}")
         return False
     else:
         logger.error(f"❌ Error checking 'waitlist' table: {response.status_code} - {response.text}")
         return False
+
+def create_waitlist_table():
+    """Create the waitlist table in Supabase if it doesn't exist"""
+    logger.info("Attempting to create 'waitlist' table in Supabase")
+    
+    headers = {
+        "apikey": SUPABASE_KEY,
+        "Authorization": f"Bearer {SUPABASE_KEY}",
+        "Content-Type": "application/json"
+    }
+    
+    # Unfortunately, we can't create tables using the REST API directly
+    # We would need to use the Supabase Management API or the Supabase dashboard
+    logger.error("Cannot automatically create the table via REST API")
+    logger.error("Please create the 'waitlist' table manually in the Supabase dashboard with the following SQL:")
+    logger.error(CREATE_TABLE_SQL)
+    logger.error("\nThen enable RLS and create an insert policy:")
+    logger.error(ENABLE_RLS_SQL)
+    logger.error(CREATE_INSERT_POLICY_SQL)
+    
+    return False
 
 def test_supabase_insert():
     """Test inserting a record into the 'waitlist' table"""
