@@ -26,7 +26,6 @@ const Header = () => {
           <nav className="hidden md:flex space-x-8">
             <a href="#features" className="text-gray-600 hover:text-gray-900 font-medium">Features</a>
             <a href="#integrations" className="text-gray-600 hover:text-gray-900 font-medium">Integrations</a>
-            <a href="#contact" className="text-gray-600 hover:text-gray-900 font-medium">Contact</a>
             <a href="#waitlist" className="bg-gray-900 text-white px-4 py-2 rounded-md font-medium hover:bg-gray-800 transition-colors">Get Started</a>
           </nav>
         </div>
