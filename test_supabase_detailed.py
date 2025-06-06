@@ -53,7 +53,21 @@ def test_rest_api():
         logger.info(f"REST API Status Code: {response.status_code}")
         
         if response.status_code == 201:
-            logger.info(f"REST API Response: {response.json()}")
+            logger.info("REST API insert successful (201 Created)")
+            logger.info(f"Response headers: {response.headers}")
+            
+            # Try to get the inserted data
+            get_response = requests.get(
+                f"{SUPABASE_URL}/rest/v1/waitlist?select=*&first_name=eq.Emma&last_name=eq.Davis",
+                headers=headers
+            )
+            
+            logger.info(f"GET Status Code: {get_response.status_code}")
+            
+            if get_response.status_code == 200:
+                logger.info(f"GET Response: {get_response.json()}")
+            else:
+                logger.error(f"GET Error: {get_response.text}")
         else:
             logger.error(f"REST API Error: {response.text}")
             
