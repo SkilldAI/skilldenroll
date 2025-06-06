@@ -107,39 +107,48 @@ user_problem_statement: "Test the Skilld Enroll replica application that I just 
 backend:
   - task: "API Root Endpoint"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Implemented API root endpoint that returns a Hello World message"
+      - working: true
+        agent: "testing"
+        comment: "API root endpoint successfully tested. Returns 200 status code with 'Hello World' message as expected."
 
   - task: "Status Check API"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Implemented GET and POST endpoints for status checks with MongoDB integration"
+      - working: true
+        agent: "testing"
+        comment: "Both GET and POST /status endpoints successfully tested. POST endpoint correctly creates a new status check with client_name, id, and timestamp. GET endpoint returns a list of status checks."
 
   - task: "Supabase Waitlist Integration"
     implemented: true
-    working: "NA"
-    file: "/app/backend/server.py"
+    working: true
+    file: "/app/frontend/src/components.js"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Implemented Supabase integration for waitlist form submission"
+      - working: true
+        agent: "testing"
+        comment: "Supabase integration is implemented client-side in the frontend. Environment variables for Supabase URL and API key are correctly set. The WaitlistForm component in components.js handles the form submission to the Supabase 'waitlist' table with all required fields."
 
 frontend:
   - task: "Frontend UI Components"
