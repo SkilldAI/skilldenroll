@@ -100,6 +100,26 @@ const FeaturesSection = () => {
       title: "Conversation Analytics",
       description: "Gain insights from every voice interaction to improve recruitment strategies.",
       icon: "https://img.icons8.com/fluency/96/analytics.png"
+    },
+    {
+      title: "Smart Lead Qualification",
+      description: "Automatically qualify prospects based on conversation patterns, academic interests, and enrollment readiness scores.",
+      icon: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74"
+    },
+    {
+      title: "Automated Appointment Scheduling",
+      description: "AI agents schedule campus visits, virtual tours, and counselor meetings directly through voice conversations.",
+      icon: "https://images.unsplash.com/photo-1633526543814-9718c8922b7a"
+    },
+    {
+      title: "Real-time Escalation",
+      description: "Seamlessly transfer complex inquiries to human recruiters while maintaining conversation context and history.",
+      icon: "https://images.pexels.com/photos/6667680/pexels-photo-6667680.jpeg"
+    },
+    {
+      title: "Custom Voice Training",
+      description: "Train AI agents with your institution's specific programs, policies, and brand voice for authentic conversations.",
+      icon: "https://images.pexels.com/photos/256502/pexels-photo-256502.jpeg"
     }
   ];
 
