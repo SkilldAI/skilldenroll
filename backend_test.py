@@ -96,10 +96,6 @@ class BackendAPITest(unittest.TestCase):
                 "student_count": "1,000 - 5,000"
             }
             
-            # Generate a unique identifier for this test entry to avoid duplicates
-            test_id = f"test_{int(time.time())}"
-            test_data["test_id"] = test_id
-            
             # Attempt to insert data into the waitlist table
             logger.info(f"Attempting to insert test data into Supabase waitlist table: {test_data}")
             result = supabase.table('waitlist').insert(test_data).execute()
@@ -111,11 +107,6 @@ class BackendAPITest(unittest.TestCase):
             self.assertEqual(result.data[0]['email'], test_data['email'], "Email mismatch in inserted data")
             
             logger.info("Successfully inserted test data into Supabase waitlist table")
-            
-            # Clean up the test data
-            logger.info(f"Cleaning up test data with test_id: {test_id}")
-            supabase.table('waitlist').delete().eq('test_id', test_id).execute()
-            
             logger.info("Supabase integration test passed")
             
         except Exception as e:
