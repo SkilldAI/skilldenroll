@@ -152,6 +152,9 @@ backend:
       - working: false
         agent: "testing"
         comment: "Supabase integration is not working due to permission issues. The waitlist table exists with the correct schema, but Row Level Security (RLS) policies are blocking inserts from the anonymous key. The frontend code was also using incorrect field names (work_email instead of email, institution_name instead of institution). I've updated the frontend code to use the correct field names, but the RLS policies still need to be fixed in the Supabase dashboard."
+      - working: false
+        agent: "testing"
+        comment: "Supabase integration is still not working. The field names in the frontend code have been corrected, but the RLS policies are still blocking inserts. When testing with the Supabase Python client, we get a permission error: 'permission denied for table users'. The SQL commands to fix the RLS policies need to be executed in the Supabase dashboard: ALTER TABLE public.waitlist ENABLE ROW LEVEL SECURITY; CREATE POLICY 'Allow anonymous inserts to waitlist' ON public.waitlist FOR INSERT TO anon USING (true); GRANT INSERT ON public.waitlist TO anon;"
 
 frontend:
   - task: "Frontend UI Components"
@@ -199,3 +202,5 @@ agent_communication:
     message: "I've tested all backend API endpoints and they are working correctly. The API root endpoint returns a 200 status code with 'Hello World' message. Both GET and POST /status endpoints are functioning properly with MongoDB integration. The Supabase integration for the waitlist form is implemented client-side in the frontend with proper environment variables set."
   - agent: "testing"
     message: "I've identified issues with the Supabase waitlist form integration. The waitlist table exists in Supabase with the correct schema, but there are two problems: 1) The frontend code was using incorrect field names (work_email instead of email, institution_name instead of institution) which I've fixed, and 2) Row Level Security (RLS) policies are blocking inserts from the anonymous key. To fix the RLS issue, you need to run the following SQL commands in the Supabase dashboard: ALTER TABLE public.waitlist ENABLE ROW LEVEL SECURITY; CREATE POLICY 'Allow anonymous inserts to waitlist' ON public.waitlist FOR INSERT TO anon USING (true); GRANT INSERT ON public.waitlist TO anon;"
+  - agent: "testing"
+    message: "I've retested the Supabase waitlist integration and it's still not working. The field names in the frontend code have been corrected, but the RLS policies are still blocking inserts. When testing with the Supabase Python client, we get a permission error: 'permission denied for table users'. The SQL commands to fix the RLS policies need to be executed in the Supabase dashboard as previously mentioned."
