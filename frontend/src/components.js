@@ -46,20 +46,20 @@ const Header = () => {
 // Hero Section Component
 const HeroSection = () => {
   return (
-    <section className="bg-white py-16 lg:py-24">
+    <section className="bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 py-16 lg:py-24 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+            <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
               Redefine Student 
               <br />
               Recruitment for 
               <br />
               Higher Education 
               <br />
-              <span className="text-gray-900">Using Voice AI Agents</span>
+              <span className="text-yellow-300">Using Voice AI Agents</span>
             </h1>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+            <p className="text-lg text-blue-100 mb-8 leading-relaxed">
               Conversational voice AI agents designed specifically for 
               universities and colleges to streamline student recruitment, 
               answer inquiries 24/7, and create personalized engagement at 
@@ -67,13 +67,13 @@ const HeroSection = () => {
             </p>
             <a 
               href="#waitlist" 
-              className="inline-block bg-gray-900 text-white px-8 py-4 rounded-md font-semibold hover:bg-gray-800 transition-colors text-lg"
+              className="inline-block bg-yellow-400 text-gray-900 px-8 py-4 rounded-md font-semibold hover:bg-yellow-300 transition-colors text-lg shadow-lg"
             >
               Join Waitlist
             </a>
           </div>
           <div className="relative">
-            <div className="bg-gray-100 rounded-2xl p-8 h-96 flex items-center justify-center">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 h-96 flex items-center justify-center border border-white/20">
               <img 
                 src="https://images.unsplash.com/photo-1485579149621-3123dd979885"
                 alt="Professional Voice Technology"
