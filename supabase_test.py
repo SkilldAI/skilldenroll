@@ -170,15 +170,9 @@ def main():
     # Test if table exists
     table_exists = test_supabase_table_exists()
     if not table_exists:
-        logger.error("Cannot proceed with tests as 'waitlist' table does not exist")
-        logger.error("Please create a 'waitlist' table in your Supabase project with the following columns:")
-        logger.error("- first_name (text)")
-        logger.error("- last_name (text)")
-        logger.error("- work_email (text)")
-        logger.error("- institution_name (text)")
-        logger.error("- role (text)")
-        logger.error("- student_count (text)")
-        logger.error("- created_at (timestamp)")
+        logger.info("Attempting to provide guidance for table creation...")
+        create_waitlist_table()
+        logger.info("\nAfter creating the table, run this test script again.")
         return
     
     # Check RLS policies
@@ -196,8 +190,13 @@ def main():
         logger.info("\n=== Troubleshooting Tips ===")
         logger.info("1. Check if RLS policies are enabled on the 'waitlist' table")
         logger.info("2. If RLS is enabled, ensure there's a policy allowing inserts for the anonymous key")
-        logger.info("3. Verify the table schema matches the expected fields")
+        logger.info("3. Verify the table schema matches the expected fields:")
+        for field in test_data.keys():
+            logger.info(f"   - {field}")
         logger.info("4. Check if the anon key has the necessary permissions")
+        logger.info("\nSQL to fix RLS policies:")
+        logger.info(ENABLE_RLS_SQL)
+        logger.info(CREATE_INSERT_POLICY_SQL)
 
 if __name__ == "__main__":
     main()
