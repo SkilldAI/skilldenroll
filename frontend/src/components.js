@@ -325,7 +325,7 @@ const WaitlistForm = () => {
 
             <div>
               <label htmlFor="studentCount" className="block text-sm font-medium text-gray-700 mb-2">
-                Student Count *
+                Call Centre Agents *
               </label>
               <select
                 id="studentCount"
@@ -335,12 +335,13 @@ const WaitlistForm = () => {
                 onChange={handleInputChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-gray-900 outline-none transition-colors"
               >
-                <option value="">Select student count</option>
-                <option value="Under 1,000">Under 1,000</option>
-                <option value="1,000 - 5,000">1,000 - 5,000</option>
-                <option value="5,000 - 10,000">5,000 - 10,000</option>
-                <option value="10,000 - 20,000">10,000 - 20,000</option>
-                <option value="Over 20,000">Over 20,000</option>
+                <option value="">Select number of call centre agents</option>
+                <option value="0-15">0-15</option>
+                <option value="16-25">16-25</option>
+                <option value="26-50">26-50</option>
+                <option value="51-100">51-100</option>
+                <option value="101-200">101-200</option>
+                <option value="200+">200+</option>
               </select>
             </div>
 
