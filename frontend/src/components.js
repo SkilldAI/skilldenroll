@@ -446,18 +446,24 @@ const WaitlistForm = () => {
     setError('');
 
     try {
-      // Check if Supabase is available
+      // Check if Supabase credentials are available
       if (!supabaseUrl || !supabaseKey) {
-        setError('Configuration error: Supabase credentials not found. Please check environment variables.');
+        console.error('Missing Supabase environment variables:', {
+          supabaseUrl: supabaseUrl ? 'Present' : 'Missing',
+          supabaseKey: supabaseKey ? 'Present' : 'Missing'
+        });
+        setError('Configuration error: Supabase credentials not found. Please contact support.');
         return;
       }
 
-      // Use direct REST API call instead of Supabase client
+      // Use direct REST API call to Supabase
       const response = await fetch(`${supabaseUrl}/rest/v1/waitlist`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'apikey': supabaseKey
+          'apikey': supabaseKey,
+          'Authorization': `Bearer ${supabaseKey}`,
+          'Prefer': 'return=minimal'
         },
         body: JSON.stringify({
           first_name: formData.firstName,
