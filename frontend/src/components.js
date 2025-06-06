@@ -16,12 +16,21 @@ if (supabaseUrl && supabaseKey) {
 
 // Header Component
 const Header = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <header className="bg-white border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
-            <div className="text-2xl font-bold text-gray-900">Skilld Enroll</div>
+            <div 
+              className="text-2xl font-bold text-gray-900 cursor-pointer hover:text-gray-700 transition-colors"
+              onClick={scrollToTop}
+            >
+              Skilld Enroll
+            </div>
           </div>
           <nav className="hidden md:flex space-x-8">
             <a href="#features" className="text-gray-600 hover:text-gray-900 font-medium">Features</a>
