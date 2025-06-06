@@ -182,7 +182,7 @@ const WaitlistForm = () => {
           workEmail: '',
           institutionName: '',
           role: '',
-          studentCount: ''
+          callCentreAgents: ''
         });
       } else {
         console.error('Supabase error:', await response.text());
