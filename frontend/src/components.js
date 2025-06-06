@@ -423,6 +423,7 @@ const WaitlistForm = () => {
     firstName: '',
     lastName: '',
     workEmail: '',
+    phoneNumber: '',
     institutionName: '',
     role: '',
     callCentreAgents: ''
