@@ -170,7 +170,7 @@ const WaitlistForm = () => {
           email: formData.workEmail,
           institution: formData.institutionName,
           role: formData.role,
-          student_count: formData.studentCount
+          student_count: formData.callCentreAgents
         })
       });
 
