@@ -93,50 +93,58 @@ const FeaturesSection = () => {
     {
       title: "24/7 Voice Assistance",
       description: "Answer prospective student questions anytime with natural voice conversations.",
-      icon: "https://images.unsplash.com/photo-1518444065439-e933c06ce9cd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwyfHx2b2ljZSUyMGFzc2lzdGFudHxlbnwwfHx8Ymx1ZXwxNzQ5MTkxNTY3fDA&ixlib=rb-4.1.0&q=85"
+      icon: "https://images.unsplash.com/photo-1518444065439-e933c06ce9cd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwyfHx2b2ljZSUyMGFzc2lzdGFudHxlbnwwfHx8Ymx1ZXwxNzQ5MTkxNTY3fDA&ixlib=rb-4.1.0&q=85",
+      color: "from-blue-500 to-blue-600"
     },
     {
       title: "Multilingual Support",
       description: "Engage international students in their native languages with fluent voice agents.",
-      icon: "https://img.icons8.com/fluency/96/language.png"
+      icon: "https://img.icons8.com/fluency/96/language.png",
+      color: "from-green-500 to-green-600"
     },
     {
       title: "Personalized Outreach",
       description: "Conduct personalized voice outreach campaigns that sound natural and engaging.",
-      icon: "https://images.pexels.com/photos/32213306/pexels-photo-32213306.jpeg"
+      icon: "https://images.pexels.com/photos/32213306/pexels-photo-32213306.jpeg",
+      color: "from-purple-500 to-purple-600"
     },
     {
       title: "Conversation Analytics",
       description: "Gain insights from every voice interaction to improve recruitment strategies.",
-      icon: "https://img.icons8.com/fluency/96/analytics.png"
+      icon: "https://img.icons8.com/fluency/96/analytics.png",
+      color: "from-orange-500 to-orange-600"
     },
     {
       title: "Smart Lead Qualification",
       description: "Automatically qualify prospects based on conversation patterns, academic interests, and enrollment readiness scores.",
-      icon: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74"
+      icon: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74",
+      color: "from-teal-500 to-teal-600"
     },
     {
       title: "Automated Appointment Scheduling",
       description: "AI agents schedule campus visits, virtual tours, and counselor meetings directly through voice conversations.",
-      icon: "https://images.unsplash.com/photo-1633526543814-9718c8922b7a"
+      icon: "https://images.unsplash.com/photo-1633526543814-9718c8922b7a",
+      color: "from-pink-500 to-pink-600"
     },
     {
       title: "Real-time Escalation",
       description: "Seamlessly transfer complex inquiries to human recruiters while maintaining conversation context and history.",
-      icon: "https://images.pexels.com/photos/6667680/pexels-photo-6667680.jpeg"
+      icon: "https://images.pexels.com/photos/6667680/pexels-photo-6667680.jpeg",
+      color: "from-indigo-500 to-indigo-600"
     },
     {
       title: "Custom Voice Training",
       description: "Train AI agents with your institution's specific programs, policies, and brand voice for authentic conversations.",
-      icon: "https://images.pexels.com/photos/256502/pexels-photo-256502.jpeg"
+      icon: "https://images.pexels.com/photos/256502/pexels-photo-256502.jpeg",
+      color: "from-red-500 to-red-600"
     }
   ];
 
   return (
-    <section id="features" className="bg-white py-16 lg:py-24">
+    <section id="features" className="bg-gradient-to-b from-gray-50 to-white py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-block bg-gray-900 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
+          <div className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full text-sm font-medium mb-4 shadow-lg">
             Features
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -150,8 +158,8 @@ const FeaturesSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="bg-white p-6 rounded-xl border border-gray-100 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
+            <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+              <div className={`w-16 h-16 bg-gradient-to-r ${feature.color} rounded-lg flex items-center justify-center mb-4 shadow-lg`}>
                 <img src={feature.icon} alt={feature.title} className="w-10 h-10 object-cover rounded" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
