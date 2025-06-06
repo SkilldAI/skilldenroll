@@ -680,6 +680,7 @@ const SkilldEnrollApp = () => {
       <Header />
       <HeroSection />
       <FeaturesSection />
+      <IntegrationsSection />
       <WaitlistForm />
       <FinalCTASection />
       <Footer />
