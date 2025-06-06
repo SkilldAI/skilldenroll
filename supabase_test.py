@@ -34,6 +34,32 @@ test_data = {
     "created_at": "2025-04-05T12:00:00.000Z"
 }
 
+# SQL statements for creating the waitlist table and setting up RLS policies
+CREATE_TABLE_SQL = """
+CREATE TABLE IF NOT EXISTS waitlist (
+    id SERIAL PRIMARY KEY,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    work_email TEXT NOT NULL,
+    institution_name TEXT NOT NULL,
+    role TEXT NOT NULL,
+    student_count TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+"""
+
+ENABLE_RLS_SQL = """
+ALTER TABLE waitlist ENABLE ROW LEVEL SECURITY;
+"""
+
+CREATE_INSERT_POLICY_SQL = """
+CREATE POLICY "Allow anonymous inserts" 
+ON waitlist
+FOR INSERT
+TO anon
+USING (true);
+"""
+
 def test_supabase_table_exists():
     """Test if the 'waitlist' table exists in Supabase"""
     logger.info("Testing if 'waitlist' table exists in Supabase")
