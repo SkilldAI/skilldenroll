@@ -122,6 +122,9 @@ backend:
       - working: true
         agent: "testing"
         comment: "Retested API root endpoint as part of the Integrations section testing. The endpoint is working correctly, returning a 200 status code with the expected 'Hello World' message."
+      - working: true
+        agent: "testing"
+        comment: "Verified API root endpoint is still working correctly after restart. Returns 200 status code with 'Hello World' message as expected."
 
   - task: "Status Check API"
     implemented: true
