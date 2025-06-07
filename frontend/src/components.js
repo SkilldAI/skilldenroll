@@ -87,6 +87,222 @@ const HeroSection = () => {
   );
 };
 
+// How It Works Animation Component
+const HowItWorksSection = () => {
+  const [activeStep, setActiveStep] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const steps = [
+    {
+      id: 1,
+      title: "Student Inquiry",
+      description: "Prospective student calls or messages your institution",
+      icon: "👨‍🎓",
+      color: "from-blue-500 to-blue-600",
+      animation: "bounce"
+    },
+    {
+      id: 2,
+      title: "AI Voice Agent Responds",
+      description: "Our AI agent answers instantly with natural conversation",
+      icon: "🤖",
+      color: "from-purple-500 to-purple-600",
+      animation: "pulse"
+    },
+    {
+      id: 3,
+      title: "Intelligent Processing",
+      description: "AI understands context, intent, and provides relevant information",
+      icon: "🧠",
+      color: "from-green-500 to-green-600",
+      animation: "ping"
+    },
+    {
+      id: 4,
+      title: "Personalized Response",
+      description: "Delivers tailored information about programs, admissions, and next steps",
+      icon: "💬",
+      color: "from-orange-500 to-orange-600",
+      animation: "spin"
+    },
+    {
+      id: 5,
+      title: "Lead Qualification",
+      description: "AI qualifies the prospect and schedules follow-up actions",
+      icon: "✅",
+      color: "from-teal-500 to-teal-600",
+      animation: "bounce"
+    }
+  ];
+
+  React.useEffect(() => {
+    setIsVisible(true);
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % steps.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section className="bg-white py-16 lg:py-24 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full text-sm font-medium mb-4 shadow-lg">
+            How It Works
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Voice AI in Action
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            See how our intelligent voice agents transform student interactions from first contact to enrollment
+          </p>
+        </div>
+
+        {/* Animation Container */}
+        <div className="relative">
+          {/* Central Voice Wave Animation */}
+          <div className="flex justify-center mb-12">
+            <div className="relative">
+              {/* Animated Voice Waves */}
+              <div className="relative w-32 h-32 flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-600 animate-pulse"></div>
+                <div className="absolute inset-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-700 animate-ping"></div>
+                <div className="absolute inset-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-800 animate-bounce"></div>
+                <div className="relative z-10 text-4xl">🎤</div>
+              </div>
+              
+              {/* Floating Voice Indicators */}
+              <div className="absolute -top-8 -left-8 w-4 h-4 bg-blue-400 rounded-full animate-bounce delay-100"></div>
+              <div className="absolute -top-4 -right-8 w-3 h-3 bg-purple-400 rounded-full animate-bounce delay-200"></div>
+              <div className="absolute -bottom-8 -left-6 w-5 h-5 bg-green-400 rounded-full animate-bounce delay-300"></div>
+              <div className="absolute -bottom-4 -right-6 w-3 h-3 bg-orange-400 rounded-full animate-bounce delay-400"></div>
+            </div>
+          </div>
+
+          {/* Steps Flow */}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+            {steps.map((step, index) => (
+              <div key={step.id} className="relative">
+                {/* Connection Line */}
+                {index < steps.length - 1 && (
+                  <div className="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-gray-300 to-gray-200 transform -translate-y-1/2 z-0">
+                    <div 
+                      className={`h-full bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-1000 ${
+                        activeStep >= index ? 'w-full' : 'w-0'
+                      }`}
+                    ></div>
+                  </div>
+                )}
+
+                {/* Step Card */}
+                <div 
+                  className={`relative z-10 bg-white p-6 rounded-xl shadow-lg border-2 transition-all duration-500 transform ${
+                    activeStep === index 
+                      ? 'border-blue-500 scale-105 shadow-2xl' 
+                      : 'border-gray-200 hover:border-gray-300'
+                  }`}
+                >
+                  {/* Step Number & Icon */}
+                  <div className="flex flex-col items-center mb-4">
+                    <div 
+                      className={`w-16 h-16 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white font-bold text-xl mb-2 transition-all duration-300 ${
+                        activeStep === index ? `animate-${step.animation}` : ''
+                      }`}
+                    >
+                      <span className="text-2xl">{step.icon}</span>
+                    </div>
+                    <div className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm font-medium">
+                      Step {step.id}
+                    </div>
+                  </div>
+
+                  {/* Step Content */}
+                  <div className="text-center">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm">
+                      {step.description}
+                    </p>
+                  </div>
+
+                  {/* Active Step Indicator */}
+                  {activeStep === index && (
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center animate-pulse">
+                      <div className="w-3 h-3 bg-white rounded-full"></div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Conversation Bubbles Animation */}
+          <div className="mt-16 relative">
+            <div className="flex justify-center space-x-8">
+              {/* Student Bubble */}
+              <div className={`bg-blue-100 p-4 rounded-2xl rounded-bl-none max-w-xs transition-all duration-500 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}>
+                <p className="text-gray-800 text-sm font-medium">
+                  "Hi, I'm interested in your computer science program. What are the admission requirements?"
+                </p>
+                <div className="flex items-center mt-2">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full mr-2"></div>
+                  <span className="text-xs text-gray-600">Prospective Student</span>
+                </div>
+              </div>
+
+              {/* Voice Wave Between */}
+              <div className="flex items-center">
+                <div className="flex space-x-1">
+                  <div className="w-2 h-8 bg-gradient-to-t from-blue-400 to-purple-600 rounded animate-pulse"></div>
+                  <div className="w-2 h-12 bg-gradient-to-t from-blue-500 to-purple-700 rounded animate-pulse delay-100"></div>
+                  <div className="w-2 h-6 bg-gradient-to-t from-blue-400 to-purple-600 rounded animate-pulse delay-200"></div>
+                  <div className="w-2 h-10 bg-gradient-to-t from-blue-500 to-purple-700 rounded animate-pulse delay-300"></div>
+                </div>
+              </div>
+
+              {/* AI Response Bubble */}
+              <div className={`bg-purple-100 p-4 rounded-2xl rounded-br-none max-w-xs transition-all duration-500 delay-200 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}>
+                <p className="text-gray-800 text-sm font-medium">
+                  "Great choice! For our CS program, you'll need a 3.0 GPA minimum, SAT scores, and completed math prerequisites. I can schedule a virtual tour for you!"
+                </p>
+                <div className="flex items-center mt-2">
+                  <div className="w-6 h-6 bg-purple-500 rounded-full mr-2 flex items-center justify-center">
+                    <span className="text-white text-xs">🤖</span>
+                  </div>
+                  <span className="text-xs text-gray-600">Skilld AI Agent</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Statistics */}
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-600 mb-2">24/7</div>
+              <div className="text-gray-600">Always Available</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-purple-600 mb-2">&lt;2s</div>
+              <div className="text-gray-600">Response Time</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-green-600 mb-2">90%</div>
+              <div className="text-gray-600">Query Resolution</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 // Features Section Component
 const FeaturesSection = () => {
   const features = [
