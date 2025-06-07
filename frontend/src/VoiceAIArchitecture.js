@@ -171,7 +171,7 @@ const VoiceAIArchitecturePage = () => {
 
                 {/* Step Card */}
                 <div 
-                  className={`relative z-10 bg-gray-800 border-2 p-6 rounded-xl transition-all duration-500 transform ${
+                  className={`relative z-10 bg-gray-800 border-2 p-6 rounded-xl transition-all duration-500 transform h-64 flex flex-col ${
                     activeFlow === index 
                       ? 'border-cyan-400 scale-105 shadow-2xl shadow-cyan-400/50' 
                       : 'border-gray-600 hover:border-gray-500'
@@ -191,15 +191,17 @@ const VoiceAIArchitecturePage = () => {
                     </div>
                   </div>
 
-                  {/* Step Content */}
-                  <div className="text-center">
-                    <h3 className="text-sm font-semibold text-white mb-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-300 text-xs mb-2">
-                      {step.description}
-                    </p>
-                    <p className="text-cyan-400 text-xs font-medium">
+                  {/* Step Content - Flex grow to fill remaining space */}
+                  <div className="text-center flex-grow flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-sm font-semibold text-white mb-2 min-h-[2.5rem] flex items-center justify-center">
+                        {step.title}
+                      </h3>
+                      <p className="text-gray-300 text-xs mb-2 min-h-[3rem] flex items-center justify-center">
+                        {step.description}
+                      </p>
+                    </div>
+                    <p className="text-cyan-400 text-xs font-medium min-h-[2.5rem] flex items-center justify-center">
                       {step.details}
                     </p>
                   </div>
