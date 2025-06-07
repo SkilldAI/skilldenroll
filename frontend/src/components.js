@@ -303,6 +303,169 @@ const HowItWorksSection = () => {
   );
 };
 
+// Audio Demo Section Component
+const AudioDemoSection = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const audioRef = React.useRef(null);
+
+  const togglePlay = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const handleTimeUpdate = () => {
+    if (audioRef.current) {
+      setCurrentTime(audioRef.current.currentTime);
+    }
+  };
+
+  const handleLoadedMetadata = () => {
+    if (audioRef.current) {
+      setDuration(audioRef.current.duration);
+    }
+  };
+
+  const handleEnded = () => {
+    setIsPlaying(false);
+    setCurrentTime(0);
+  };
+
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+
+  const progressPercentage = duration > 0 ? (currentTime / duration) * 100 : 0;
+
+  return (
+    <section className="bg-gradient-to-b from-gray-50 to-white py-16 lg:py-24">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <div className="inline-block bg-gradient-to-r from-green-600 to-blue-600 text-white px-6 py-3 rounded-full text-sm font-medium mb-4 shadow-lg">
+            Live Demo
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Hear Our Voice AI in Action
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Listen to a real conversation between a prospective student and our AI voice agent
+          </p>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+          {/* Audio Player */}
+          <div className="flex flex-col items-center">
+            {/* Audio Element */}
+            <audio
+              ref={audioRef}
+              onTimeUpdate={handleTimeUpdate}
+              onLoadedMetadata={handleLoadedMetadata}
+              onEnded={handleEnded}
+              preload="metadata"
+            >
+              <source src="/demo-conversation.wav" type="audio/wav" />
+              <source src="/demo-conversation.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+
+            {/* Visual Waveform Representation */}
+            <div className="flex items-center justify-center mb-8">
+              <div className="flex space-x-1 items-end h-16">
+                {[...Array(20)].map((_, i) => (
+                  <div
+                    key={i}
+                    className={`w-2 bg-gradient-to-t from-blue-400 to-blue-600 rounded-t transition-all duration-300 ${
+                      isPlaying 
+                        ? `animate-pulse h-${Math.floor(Math.random() * 12) + 4}` 
+                        : 'h-4'
+                    }`}
+                    style={{
+                      animationDelay: `${i * 100}ms`,
+                      height: isPlaying ? `${Math.random() * 40 + 20}px` : '16px'
+                    }}
+                  ></div>
+                ))}
+              </div>
+            </div>
+
+            {/* Play/Pause Button */}
+            <button
+              onClick={togglePlay}
+              className="w-20 h-20 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-full flex items-center justify-center shadow-lg transform hover:scale-105 transition-all duration-200 mb-6"
+            >
+              {isPlaying ? (
+                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                </svg>
+              ) : (
+                <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              )}
+            </button>
+
+            {/* Progress Bar */}
+            <div className="w-full max-w-md mb-4">
+              <div className="bg-gray-200 rounded-full h-2 overflow-hidden">
+                <div
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 h-full transition-all duration-300 ease-out"
+                  style={{ width: `${progressPercentage}%` }}
+                ></div>
+              </div>
+            </div>
+
+            {/* Time Display */}
+            <div className="flex justify-between w-full max-w-md text-sm text-gray-500 mb-6">
+              <span>{formatTime(currentTime)}</span>
+              <span>{formatTime(duration)}</span>
+            </div>
+
+            {/* Conversation Labels */}
+            <div className="grid grid-cols-2 gap-6 w-full max-w-lg">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <span className="text-2xl">👨‍🎓</span>
+                </div>
+                <div className="text-sm font-medium text-gray-700">Prospective Student</div>
+                <div className="text-xs text-gray-500">Asking about programs</div>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <span className="text-2xl">🤖</span>
+                </div>
+                <div className="text-sm font-medium text-gray-700">Skilld AI Agent</div>
+                <div className="text-xs text-gray-500">Providing instant help</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center mt-12">
+          <p className="text-gray-600 mb-6">
+            Experience natural, intelligent conversations that convert prospects into enrolled students
+          </p>
+          <a 
+            href="#waitlist" 
+            className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg transform hover:scale-105"
+          >
+            Get Your AI Voice Agent
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 // Features Section Component
 const FeaturesSection = () => {
   const features = [
