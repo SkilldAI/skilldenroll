@@ -978,6 +978,7 @@ const SkilldEnrollApp = () => {
     <div className="min-h-screen bg-white">
       <Header />
       <HeroSection />
+      <HowItWorksSection />
       <FeaturesSection />
       <IntegrationsSection />
       <WaitlistForm />
