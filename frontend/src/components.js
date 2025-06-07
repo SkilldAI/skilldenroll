@@ -199,32 +199,32 @@ const HowItWorksSection = () => {
 
                 {/* Step Card */}
                 <div 
-                  className={`relative z-10 bg-white p-6 rounded-xl shadow-lg border-2 transition-all duration-500 transform h-48 flex flex-col ${
+                  className={`relative z-10 bg-white p-4 rounded-xl shadow-lg border-2 transition-all duration-500 transform h-56 flex flex-col ${
                     activeStep === index 
                       ? 'border-blue-500 scale-105 shadow-2xl' 
                       : 'border-gray-200 hover:border-gray-300'
                   }`}
                 >
                   {/* Step Number & Icon */}
-                  <div className="flex flex-col items-center mb-4">
+                  <div className="flex flex-col items-center mb-3">
                     <div 
-                      className={`w-16 h-16 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white font-bold text-xl mb-2 transition-all duration-300 ${
+                      className={`w-14 h-14 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white font-bold mb-2 transition-all duration-300 ${
                         activeStep === index ? `animate-${step.animation}` : ''
                       }`}
                     >
-                      <span className="text-2xl">{step.icon}</span>
+                      <span className="text-xl">{step.icon}</span>
                     </div>
-                    <div className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm font-medium">
+                    <div className="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs font-medium">
                       Step {step.id}
                     </div>
                   </div>
 
                   {/* Step Content - Flex grow to fill remaining space */}
-                  <div className="text-center flex-grow flex flex-col justify-center">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2 min-h-[3rem] flex items-center justify-center">
+                  <div className="text-center flex-grow flex flex-col justify-center space-y-2">
+                    <h3 className="text-base font-semibold text-gray-900 leading-tight">
                       {step.title}
                     </h3>
-                    <p className="text-gray-600 text-sm min-h-[2.5rem] flex items-center justify-center">
+                    <p className="text-gray-600 text-sm leading-tight">
                       {step.description}
                     </p>
                   </div>
