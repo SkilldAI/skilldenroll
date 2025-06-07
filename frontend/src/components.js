@@ -35,6 +35,7 @@ const Header = () => {
           <nav className="hidden md:flex space-x-8">
             <a href="#features" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Features</a>
             <a href="#integrations" className="text-gray-600 hover:text-purple-600 font-medium transition-colors">Integrations</a>
+            <a href="/voice-ai-architecture" className="text-gray-600 hover:text-cyan-600 font-medium transition-colors">Architecture</a>
             <a href="#waitlist" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-md font-medium hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg">Get Started</a>
           </nav>
         </div>
