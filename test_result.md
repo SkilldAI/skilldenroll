@@ -143,6 +143,9 @@ backend:
       - working: true
         agent: "testing"
         comment: "Retested both GET and POST /status endpoints as part of the Integrations section testing. Both endpoints are working correctly. The POST endpoint successfully creates a new status check with the provided client_name, and includes an id and timestamp. The GET endpoint returns a list of all status checks."
+      - working: true
+        agent: "testing"
+        comment: "Verified both GET and POST /status endpoints are still working correctly after restart. The POST endpoint successfully creates a new status check with client_name, id, and timestamp. The GET endpoint returns a list of status checks as expected."
 
   - task: "Supabase Waitlist Integration"
     implemented: true
