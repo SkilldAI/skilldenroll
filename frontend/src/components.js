@@ -743,6 +743,10 @@ const Footer = () => {
 
 // Main App Component
 const SkilldEnrollApp = () => {
+  React.useEffect(() => {
+    document.title = 'Skilld Enroll - Voice AI Student Recruitment Platform';
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
