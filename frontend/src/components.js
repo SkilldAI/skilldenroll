@@ -1142,6 +1142,7 @@ const SkilldEnrollApp = () => {
       <Header />
       <HeroSection />
       <HowItWorksSection />
+      <AudioDemoSection />
       <FeaturesSection />
       <IntegrationsSection />
       <WaitlistForm />
