@@ -723,6 +723,17 @@ const Footer = () => {
             <p className="text-gray-400 mb-4">
               Transforming student recruitment with AI-powered voice agents for higher education institutions.
             </p>
+            <p className="text-gray-400">
+              Learn more about our company at{' '}
+              <a 
+                href="https://skilld.ai" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 transition-colors underline"
+              >
+                skilld.ai
+              </a>
+            </p>
           </div>
           <div>
             <h3 className="font-semibold mb-4">Product</h3>
