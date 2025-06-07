@@ -199,7 +199,7 @@ const HowItWorksSection = () => {
 
                 {/* Step Card */}
                 <div 
-                  className={`relative z-10 bg-white p-6 rounded-xl shadow-lg border-2 transition-all duration-500 transform ${
+                  className={`relative z-10 bg-white p-6 rounded-xl shadow-lg border-2 transition-all duration-500 transform h-48 flex flex-col ${
                     activeStep === index 
                       ? 'border-blue-500 scale-105 shadow-2xl' 
                       : 'border-gray-200 hover:border-gray-300'
@@ -219,12 +219,12 @@ const HowItWorksSection = () => {
                     </div>
                   </div>
 
-                  {/* Step Content */}
-                  <div className="text-center">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {/* Step Content - Flex grow to fill remaining space */}
+                  <div className="text-center flex-grow flex flex-col justify-center">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2 min-h-[3rem] flex items-center justify-center">
                       {step.title}
                     </h3>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-gray-600 text-sm min-h-[2.5rem] flex items-center justify-center">
                       {step.description}
                     </p>
                   </div>
