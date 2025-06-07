@@ -16,18 +16,26 @@ if (supabaseUrl && supabaseKey) {
 
 // Header Component
 const Header = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <header className="bg-white border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
-            <div className="text-2xl font-bold text-gray-900">Skilld Enroll</div>
+            <div 
+              className="text-2xl font-bold text-gray-900 cursor-pointer hover:text-gray-700 transition-colors"
+              onClick={scrollToTop}
+            >
+              Skilld Enroll
+            </div>
           </div>
           <nav className="hidden md:flex space-x-8">
-            <a href="#features" className="text-gray-600 hover:text-gray-900 font-medium">Features</a>
-            <a href="#integrations" className="text-gray-600 hover:text-gray-900 font-medium">Integrations</a>
-            <a href="#contact" className="text-gray-600 hover:text-gray-900 font-medium">Contact</a>
-            <a href="#waitlist" className="bg-gray-900 text-white px-4 py-2 rounded-md font-medium hover:bg-gray-800 transition-colors">Get Started</a>
+            <a href="#features" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Features</a>
+            <a href="#integrations" className="text-gray-600 hover:text-purple-600 font-medium transition-colors">Integrations</a>
+            <a href="#waitlist" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-md font-medium hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg">Get Started</a>
           </nav>
         </div>
       </div>
@@ -38,20 +46,20 @@ const Header = () => {
 // Hero Section Component
 const HeroSection = () => {
   return (
-    <section className="bg-white py-16 lg:py-24">
+    <section className="bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 py-16 lg:py-24 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+            <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
               Redefine Student 
               <br />
               Recruitment for 
               <br />
               Higher Education 
               <br />
-              <span className="text-gray-900">Using Voice AI Agents</span>
+              <span className="text-yellow-300">Using Voice AI Agents</span>
             </h1>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+            <p className="text-lg text-blue-100 mb-8 leading-relaxed">
               Conversational voice AI agents designed specifically for 
               universities and colleges to streamline student recruitment, 
               answer inquiries 24/7, and create personalized engagement at 
@@ -59,16 +67,16 @@ const HeroSection = () => {
             </p>
             <a 
               href="#waitlist" 
-              className="inline-block bg-gray-900 text-white px-8 py-4 rounded-md font-semibold hover:bg-gray-800 transition-colors text-lg"
+              className="inline-block bg-yellow-400 text-gray-900 px-8 py-4 rounded-md font-semibold hover:bg-yellow-300 transition-colors text-lg shadow-lg"
             >
               Join Waitlist
             </a>
           </div>
           <div className="relative">
-            <div className="bg-gray-100 rounded-2xl p-8 h-96 flex items-center justify-center">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 h-96 flex items-center justify-center border border-white/20">
               <img 
-                src="https://images.unsplash.com/photo-1636829147637-6b88c84fb6e2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwxfHx2b2ljZSUyMGFzc2lzdGFudHxlbnwwfHx8Ymx1ZXwxNzQ5MTkxNTY3fDA&ixlib=rb-4.1.0&q=85"
-                alt="Voice AI Technology"
+                src="https://images.unsplash.com/photo-1485579149621-3123dd979885"
+                alt="Professional Voice Technology"
                 className="w-full h-full object-cover rounded-xl"
               />
             </div>
@@ -85,30 +93,58 @@ const FeaturesSection = () => {
     {
       title: "24/7 Voice Assistance",
       description: "Answer prospective student questions anytime with natural voice conversations.",
-      icon: "https://images.unsplash.com/photo-1518444065439-e933c06ce9cd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwyfHx2b2ljZSUyMGFzc2lzdGFudHxlbnwwfHx8Ymx1ZXwxNzQ5MTkxNTY3fDA&ixlib=rb-4.1.0&q=85"
+      icon: "https://images.unsplash.com/photo-1518444065439-e933c06ce9cd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwyfHx2b2ljZSUyMGFzc2lzdGFudHxlbnwwfHx8Ymx1ZXwxNzQ5MTkxNTY3fDA&ixlib=rb-4.1.0&q=85",
+      color: "from-blue-500 to-blue-600"
     },
     {
       title: "Multilingual Support",
       description: "Engage international students in their native languages with fluent voice agents.",
-      icon: "https://img.icons8.com/fluency/96/language.png"
+      icon: "https://img.icons8.com/fluency/96/language.png",
+      color: "from-green-500 to-green-600"
     },
     {
       title: "Personalized Outreach",
       description: "Conduct personalized voice outreach campaigns that sound natural and engaging.",
-      icon: "https://images.pexels.com/photos/32213306/pexels-photo-32213306.jpeg"
+      icon: "https://images.pexels.com/photos/32213306/pexels-photo-32213306.jpeg",
+      color: "from-purple-500 to-purple-600"
     },
     {
       title: "Conversation Analytics",
       description: "Gain insights from every voice interaction to improve recruitment strategies.",
-      icon: "https://img.icons8.com/fluency/96/analytics.png"
+      icon: "https://img.icons8.com/fluency/96/analytics.png",
+      color: "from-orange-500 to-orange-600"
+    },
+    {
+      title: "Smart Lead Qualification",
+      description: "Automatically qualify prospects based on conversation patterns, academic interests, and enrollment readiness scores.",
+      icon: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74",
+      color: "from-teal-500 to-teal-600"
+    },
+    {
+      title: "Automated Appointment Scheduling",
+      description: "AI agents schedule campus visits, virtual tours, and counselor meetings directly through voice conversations.",
+      icon: "https://images.unsplash.com/photo-1633526543814-9718c8922b7a",
+      color: "from-pink-500 to-pink-600"
+    },
+    {
+      title: "Real-time Escalation",
+      description: "Seamlessly transfer complex inquiries to human recruiters while maintaining conversation context and history.",
+      icon: "https://images.pexels.com/photos/6667680/pexels-photo-6667680.jpeg",
+      color: "from-indigo-500 to-indigo-600"
+    },
+    {
+      title: "Custom Voice Training",
+      description: "Train AI agents with your institution's specific programs, policies, and brand voice for authentic conversations.",
+      icon: "https://images.pexels.com/photos/256502/pexels-photo-256502.jpeg",
+      color: "from-red-500 to-red-600"
     }
   ];
 
   return (
-    <section id="features" className="bg-white py-16 lg:py-24">
+    <section id="features" className="bg-gradient-to-b from-gray-50 to-white py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-block bg-gray-900 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
+          <div className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full text-sm font-medium mb-4 shadow-lg">
             Features
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -122,8 +158,8 @@ const FeaturesSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="bg-white p-6 rounded-xl border border-gray-100 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
+            <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+              <div className={`w-16 h-16 bg-gradient-to-r ${feature.color} rounded-lg flex items-center justify-center mb-4 shadow-lg`}>
                 <img src={feature.icon} alt={feature.title} className="w-10 h-10 object-cover rounded" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
@@ -387,6 +423,7 @@ const WaitlistForm = () => {
     firstName: '',
     lastName: '',
     workEmail: '',
+    phoneNumber: '',
     institutionName: '',
     role: '',
     callCentreAgents: ''
@@ -409,23 +446,30 @@ const WaitlistForm = () => {
     setError('');
 
     try {
-      // Check if Supabase is available
+      // Check if Supabase credentials are available
       if (!supabaseUrl || !supabaseKey) {
-        setError('Configuration error: Supabase credentials not found. Please check environment variables.');
+        console.error('Missing Supabase environment variables:', {
+          supabaseUrl: supabaseUrl ? 'Present' : 'Missing',
+          supabaseKey: supabaseKey ? 'Present' : 'Missing'
+        });
+        setError('Configuration error: Supabase credentials not found. Please contact support.');
         return;
       }
 
-      // Use direct REST API call instead of Supabase client
+      // Use direct REST API call to Supabase
       const response = await fetch(`${supabaseUrl}/rest/v1/waitlist`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'apikey': supabaseKey
+          'apikey': supabaseKey,
+          'Authorization': `Bearer ${supabaseKey}`,
+          'Prefer': 'return=minimal'
         },
         body: JSON.stringify({
           first_name: formData.firstName,
           last_name: formData.lastName,
           email: formData.workEmail,
+          phone_number: formData.phoneNumber,
           institution: formData.institutionName,
           role: formData.role,
           student_count: formData.callCentreAgents
@@ -438,6 +482,7 @@ const WaitlistForm = () => {
           firstName: '',
           lastName: '',
           workEmail: '',
+          phoneNumber: '',
           institutionName: '',
           role: '',
           callCentreAgents: ''
@@ -505,7 +550,7 @@ const WaitlistForm = () => {
                   required
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-gray-900 outline-none transition-colors"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                   placeholder="Enter your first name"
                 />
               </div>
@@ -520,7 +565,7 @@ const WaitlistForm = () => {
                   required
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-gray-900 outline-none transition-colors"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                   placeholder="Enter your last name"
                 />
               </div>
@@ -537,8 +582,24 @@ const WaitlistForm = () => {
                 required
                 value={formData.workEmail}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-gray-900 outline-none transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                 placeholder="Enter your work email"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-2">
+                Phone Number *
+              </label>
+              <input
+                type="tel"
+                id="phoneNumber"
+                name="phoneNumber"
+                required
+                value={formData.phoneNumber}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                placeholder="Enter your phone number"
               />
             </div>
 
@@ -553,7 +614,7 @@ const WaitlistForm = () => {
                 required
                 value={formData.institutionName}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-gray-900 outline-none transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                 placeholder="Enter your institution name"
               />
             </div>
@@ -568,7 +629,7 @@ const WaitlistForm = () => {
                 required
                 value={formData.role}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-gray-900 outline-none transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
               >
                 <option value="">Select your role</option>
                 <option value="Admissions Director">Admissions Director</option>
@@ -583,7 +644,7 @@ const WaitlistForm = () => {
 
             <div>
               <label htmlFor="callCentreAgents" className="block text-sm font-medium text-gray-700 mb-2">
-                Call Centre Agents *
+                Number of Call Centre Agents *
               </label>
               <select
                 id="callCentreAgents"
@@ -591,7 +652,7 @@ const WaitlistForm = () => {
                 required
                 value={formData.callCentreAgents}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-gray-900 outline-none transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
               >
                 <option value="">Select number of call centre agents</option>
                 <option value="0-15">0-15</option>
@@ -612,7 +673,7 @@ const WaitlistForm = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gray-900 text-white py-4 px-6 rounded-lg font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg transform hover:scale-[1.02]"
             >
               {isSubmitting ? 'Joining Waitlist...' : 'Join Waitlist'}
             </button>
@@ -656,7 +717,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="col-span-1 md:col-span-2">
             <div className="text-2xl font-bold mb-4">Skilld Enroll</div>
             <p className="text-gray-400 mb-4">
@@ -669,13 +730,6 @@ const Footer = () => {
               <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
               <li><a href="#integrations" className="hover:text-white transition-colors">Integrations</a></li>
               <li><a href="#waitlist" className="hover:text-white transition-colors">Join Waitlist</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href="#testimonials" className="hover:text-white transition-colors">Testimonials</a></li>
-              <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>
         </div>
